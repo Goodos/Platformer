@@ -36,8 +36,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
         {
-            anim.Play("Idle");
-            isGrounded = true;
+            if (collision.contacts[0].point.y > GetComponent<CapsuleCollider2D>().bounds.center.y)
+            {
+                return;
+            }
+            else
+            {
+                anim.Play("Idle");
+                isGrounded = true;
+            }
         }
     }
 
@@ -46,10 +53,16 @@ public class PlayerMovement : MonoBehaviour
         if (canMove)
         {
 #if UNITY_EDITOR
-            MovementKeyboard();
+            if (joystick.Horizontal == 0 && joystick.Vertical == 0)
+                MovementKeyboard();
+#endif
+#if UNITY_STANDALONE
+            if (joystick.Horizontal == 0 && joystick.Vertical == 0)
+                MovementKeyboard();
 #endif
 #if UNITY_ANDROID
-            MovementTouch();
+            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+                MovementTouch();
 #endif
         }
     }
@@ -72,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Jump();
             }
-            if (joystick.Vertical < -.3f)
+            if (joystick.Vertical <= -.8f)
             {
                 Crouch(StateAnim.start);
             }
@@ -101,7 +114,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Jump();
             }
-            if (Input.GetAxis("Vertical") < -.3f)
+            if (Input.GetAxis("Vertical") < -.4f)
             {
                 Crouch(StateAnim.start);
             }
@@ -200,12 +213,15 @@ public class PlayerMovement : MonoBehaviour
             GameObject slash = Instantiate(slashPref);
             slash.transform.position = transform.position;
             Flip(slash.transform, playerDirection);
-            slash.GetComponent<Rigidbody2D>().AddForce(playerDirection * 200f);
+            slash.GetComponent<SlashController>().direction = playerDirection.x >= 0 ? Vector2.right : Vector2.left;
+            //slash.GetComponent<Rigidbody2D>().AddForce(playerDirection.x >= 0 ? Vector2.right : Vector2.left * 200f);
         }        
     }
 
     void StopMovement()
     {
         canMove = false;
+        attackButton.interactable = false;
+        rangeAttackButton.interactable = false;
     }
 }

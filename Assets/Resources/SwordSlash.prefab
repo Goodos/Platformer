@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2542502329491391985}
   - component: {fileID: 3575994913212819919}
-  - component: {fileID: 5635317901673591254}
-  - component: {fileID: 1758366476550461967}
   - component: {fileID: 3843968707960622139}
-  m_Layer: 0
+  - component: {fileID: 6316857615654732723}
+  - component: {fileID: 1598717655640703830}
+  m_Layer: 11
   m_Name: SwordSlash
   m_TagString: Sword
   m_Icon: {fileID: 0}
@@ -84,7 +84,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!68 &5635317901673591254
+--- !u!114 &3843968707960622139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283453861834863995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fbc476dc0fbe64f95bc346ce88308d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0}
+--- !u!68 &6316857615654732723
 EdgeCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,12 +113,12 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -3.9747264, y: -1.8269854}
-  - {x: 0.00007472932, y: -1.52834}
-  - {x: 2.388082, y: -0.23571804}
-  - {x: 3.373927, y: 1.4336283}
-  - {x: 3.429357, y: 2.835918}
---- !u!50 &1758366476550461967
+  - {x: -3.7973614, y: -1.7840252}
+  - {x: -0.5806689, y: -1.6128379}
+  - {x: 2.0802336, y: -0.4765827}
+  - {x: 3.1220226, y: 0.9546033}
+  - {x: 3.4282537, y: 2.045477}
+--- !u!50 &1598717655640703830
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -126,15 +139,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3843968707960622139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283453861834863995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32fbc476dc0fbe64f95bc346ce88308d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
