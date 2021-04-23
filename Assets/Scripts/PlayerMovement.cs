@@ -214,7 +214,6 @@ public class PlayerMovement : MonoBehaviour
             slash.transform.position = transform.position;
             Flip(slash.transform, playerDirection);
             slash.GetComponent<SlashController>().direction = playerDirection.x >= 0 ? Vector2.right : Vector2.left;
-            //slash.GetComponent<Rigidbody2D>().AddForce(playerDirection.x >= 0 ? Vector2.right : Vector2.left * 200f);
         }        
     }
 
